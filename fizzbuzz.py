@@ -15,6 +15,7 @@ idea.
 from argparse import _AppendAction, ArgumentParser
 from itertools import islice, count, combinations, chain
 from functools import reduce
+from math import gcd
 
 class FizzBuzzAction(_AppendAction):
     """
@@ -50,7 +51,7 @@ def intersect(term_a, term_b):
     # split each into their `n` and `word` components
     a_n, a_w = term_a
     b_n, b_w = term_b
-    return a_n * b_n, "{}{}".format(a_w, b_w)
+    return a_n * b_n // gcd(a_n, b_n), "{}{}".format(a_w, b_w)
 
 def fizzbuzz(terms):
     """
